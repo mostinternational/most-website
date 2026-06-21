@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MOST — Sport Commercial &amp; Creative Consultancy</title>
+<meta name="description" content="MOST is a boutique sport commercial and creative consultancy connecting PE-backed European clubs with commercial partners in CEE and Francophone markets.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C1C1C;
+    --crimson: #8B1A1A;
+    --parchment: #f7f3e6;
+    --parch2: #EAE3CC;
+    --parch3: #D8D1B8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--parchment); color: var(--ink); font-family: "Inter", sans-serif; font-size: 16px; line-height: 1.7; }
+  ::selection { background: var(--ink); color: var(--parchment); }
+
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  @media (max-width: 680px) { .wrap { padding: 0 24px; } }
+
+  /* animated underline */
+  a.u { color: inherit; text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 0% 1.5px; background-position: 0 100%; transition: background-size .35s ease; padding-bottom: 2px; }
+  a.u:hover { background-size: 100% 1.5px; }
+
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s ease, transform .75s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: .1s }
+  .reveal.d2 { transition-delay: .2s }
+  .reveal.d3 { transition-delay: .3s }
+  .reveal.d4 { transition-delay: .4s }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none }
+    .marquee span { animation: none }
+  }
+
+  /* ─── NAV ─── */
+  html { scroll-padding-top: 40px; }
+  nav {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--parchment);
+    border-bottom: 1px solid var(--ink);
+  }
+  nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 20px; padding-bottom: 16px;
+  }
+  .navmark {
+    text-decoration: none; display: flex; align-items: center;
+  }
+  .navmark img { height: 72px; width: auto; display: block; }
+  nav ul { display: flex; gap: 32px; list-style: none; }
+  nav ul a { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: var(--ink); text-decoration: none; }
+  nav ul a:hover { color: var(--crimson); }
+  .nav-cta {
+    font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+    border: 1.5px solid var(--ink); padding: 8px 18px;
+    color: var(--ink); text-decoration: none;
+    transition: background .2s, color .2s;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--parchment); }
+  @media (max-width: 900px) { nav ul { display: none; } }
+  @media (max-width: 680px) { .nav-cta { display: none; } }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative; min-height: 96vh;
+    display: flex; align-items: flex-end;
+    overflow: hidden; background: #1e1c17;
+  }
+  @keyframes slowzoom {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.06); }
+    100% { transform: scale(1); }
+  }
+  .hero video.bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 0;
+    animation: slowzoom 20s ease-in-out infinite;
+  }
+  .hero .shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(170deg, rgba(28,28,28,.12) 0%, rgba(28,28,28,.68) 100%);
+    z-index: 1;
+  }
+  .hero .inner { position: relative; z-index: 2; padding: 0 0 88px; width: 100%; }
+  .hero .loc {
+    font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(242,237,215,.7); margin-bottom: 24px; font-weight: 500;
+  }
+  .hero h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500; color: var(--parchment);
+    font-size: clamp(3.6rem, 8.5vw, 7.2rem);
+    line-height: 1.0; max-width: 14em;
+    letter-spacing: -.01em;
+  }
+  .hero h1 em { font-style: italic; }
+  .hero .sub {
+    color: rgba(242,237,215,.82);
+    max-width: 40em; margin-top: 28px;
+    font-size: clamp(.9rem, 1.2vw, 1.05rem);
+    line-height: 1.72;
+  }
+  .hero .cta-row { display: flex; gap: 16px; align-items: center; margin-top: 40px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--parchment); color: var(--ink);
+    text-decoration: none; padding: 16px 36px;
+    font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600;
+    transition: background .2s, color .2s;
+  }
+  .btn-primary:hover { background: var(--crimson); color: var(--parchment); }
+  .btn-ghost {
+    display: inline-block;
+    border: 1.5px solid rgba(242,237,215,.55); color: rgba(242,237,215,.85);
+    text-decoration: none; padding: 15px 32px;
+    font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500;
+    transition: border-color .2s, color .2s;
+  }
+  .btn-ghost:hover { border-color: var(--parchment); color: var(--parchment); }
+  .scrolldown {
+    position: absolute; bottom: 28px; right: 40px;
+    color: rgba(242,237,215,.55); font-size: .62rem;
+    letter-spacing: .18em; text-transform: uppercase; z-index: 2;
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee {
+    border-bottom: 1px solid var(--ink);
+    overflow: hidden; white-space: nowrap; padding: 13px 0;
+  }
+  .marquee span {
+    display: inline-block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-size: 1.1rem; letter-spacing: .05em;
+    animation: mq 38s linear infinite;
+  }
+  .marquee .dia { font-style: normal; font-size: .7em; vertical-align: 2px; padding: 0 20px; }
+  @keyframes mq { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 100px 0; border-bottom: 1px solid var(--ink); }
+
+  .kicker {
+    font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+    font-weight: 600; color: var(--crimson); margin-bottom: 20px;
+  }
+  h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600; font-size: clamp(2.4rem, 5vw, 4.2rem);
+    line-height: 1.04; max-width: 18em;
+  }
+  h2 .rule {
+    display: block; width: 0; border-top: 2px solid var(--crimson);
+    margin-bottom: 22px; transition: width .9s ease .15s;
+  }
+  .in h2 .rule, h2.in .rule { width: 56px; }
+
+  /* ─── MANIFESTO ─── */
+  .manifesto-section { background: var(--parchment); }
+  .manifesto-inner { max-width: 860px; }
+  .manifesto-inner p {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: clamp(1.55rem, 2.8vw, 2.4rem);
+    line-height: 1.3; margin-bottom: 40px;
+  }
+  .manifesto-inner p em { font-style: italic; color: var(--crimson); }
+  .manifesto-inner .aside {
+    font-family: "Inter", sans-serif; font-size: 1rem;
+    max-width: 48em; line-height: 1.75;
+    border-left: 2px solid var(--crimson); padding-left: 22px;
+    color: #3a3528;
+  }
+
+  /* ─── FULL-BLEED GROUND ─── */
+  .ground-bleed {
+    position: relative; height: 72vh; min-height: 480px;
+    overflow: hidden; border-bottom: 1px solid var(--ink);
+  }
+  .ground-bleed img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+    transition: transform 8s ease;
+  }
+  .ground-bleed:hover img { transform: scale(1.04); }
+  .ground-bleed .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(transparent 40%, rgba(28,28,28,.62));
+  }
+  .ground-bleed .caption {
+    position: absolute; bottom: 32px; left: 40px; right: 40px;
+    color: var(--parchment);
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .ground-bleed .caption h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-weight: 500;
+    font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+    line-height: 1.1;
+  }
+  .ground-bleed .caption span {
+    font-size: .62rem; letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(242,237,215,.65);
+  }
+
+  /* ─── GROUNDS GRID ─── */
+  .grounds-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; margin-top: 48px; }
+  .grd { position: relative; aspect-ratio: 2/3; overflow: hidden; }
+  .grd img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+  .grd:hover img { transform: scale(1.06); }
+  .grd span {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 10px 12px; font-size: .6rem; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--parchment);
+    background: linear-gradient(transparent, rgba(20,20,18,.8));
+  }
+  @media (max-width: 820px) { .grounds-grid { grid-template-columns: repeat(3,1fr); } }
+  @media (max-width: 560px) { .grounds-grid { grid-template-columns: repeat(2,1fr); } }
+
+  /* ─── SERVICES MEGA-BLOCKS ─── */
+  .services-section { padding: 0; border-bottom: 1px solid var(--ink); }
+  .svc-header { padding: 100px 0 72px; border-bottom: 1px solid var(--ink); }
+
+  .mega-block {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    border-bottom: 1px solid var(--ink);
+    min-height: 480px;
+  }
+  .mega-block.flip { grid-template-columns: 7fr 5fr; }
+  .mega-block.dark { background: var(--ink); color: var(--parchment); }
+  .mega-block .mb-text {
+    padding: 72px 56px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .mega-block.flip .mb-text { order: 2; }
+  .mega-block .mb-visual {
+    position: relative; overflow: hidden;
+    background: var(--parch2);
+  }
+  .mega-block.flip .mb-visual { order: 1; }
+  .mega-block .mb-visual img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .mega-block .mb-visual .vis-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(28,28,28,.38), rgba(28,28,28,.08));
+  }
+  .mega-block .mb-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-size: 1.1rem; margin-bottom: 10px;
+    opacity: .7;
+  }
+  .mega-block h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600; font-size: clamp(1.9rem, 2.8vw, 2.6rem);
+    line-height: 1.06; margin-bottom: 20px;
+  }
+  .mega-block .mb-desc {
+    font-size: .97rem; line-height: 1.72; margin-bottom: 36px;
+    max-width: 38em;
+  }
+  .mega-block.dark .mb-desc { color: rgba(242,237,215,.8); }
+  .mega-block .svc-list { list-style: none; }
+  .mega-block .svc-list li {
+    padding: 14px 0; border-top: 1px solid rgba(125,120,105,.3);
+    font-size: .93rem;
+  }
+  .mega-block.dark .svc-list li { border-top-color: rgba(242,237,215,.15); }
+  .mega-block .svc-list li:last-child { border-bottom: 1px solid rgba(125,120,105,.3); }
+  .mega-block.dark .svc-list li:last-child { border-bottom-color: rgba(242,237,215,.15); }
+  .mega-block .svc-list b { display: block; font-weight: 600; margin-bottom: 2px; }
+  .mega-block .svc-list small { font-size: .84rem; opacity: .75; }
+  .mega-block .mb-quote {
+    margin-top: 36px; font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-size: 1.15rem; line-height: 1.4;
+    border-left: 2px solid var(--crimson); padding-left: 18px;
+  }
+  .mega-block.dark .mb-quote { border-left-color: rgba(242,237,215,.35); }
+  @media (max-width: 900px) {
+    .mega-block, .mega-block.flip { grid-template-columns: 1fr; min-height: auto; }
+    .mega-block .mb-text { padding: 56px 24px; order: 2; }
+    .mega-block .mb-visual { min-height: 320px; order: 1; }
+    .mega-block.flip .mb-text { order: 2; }
+    .mega-block.flip .mb-visual { order: 1; }
+  }
+
+  /* ─── FOUNDER ─── */
+  .founder-grid {
+    display: grid; grid-template-columns: 5fr 7fr;
+    gap: 72px; align-items: start;
+  }
+  .founder-col { display: flex; flex-direction: column; }
+  .founder-photo {
+    position: relative; aspect-ratio: 3/4; overflow: hidden;
+  }
+  .founder-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .founder-photo .ph-label {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 10px 14px; font-size: .6rem; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--parchment);
+    background: rgba(28,28,28,.75);
+  }
+  .linkedin-btn {
+    display: block; margin-top: 12px; text-align: center;
+    font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+    color: var(--ink); border: 1.5px solid var(--ink); padding: 10px 0;
+    text-decoration: none; transition: background .2s, color .2s;
+  }
+  .linkedin-btn:hover { background: var(--ink); color: var(--parchment); }
+  .founder-text h2 { max-width: 16em; }
+  .founder-text p { font-size: 1.02rem; line-height: 1.78; max-width: 38em; margin-top: 22px; }
+  .sig {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-size: 1.75rem; margin-top: 32px;
+  }
+
+  /* stat band */
+  .stat-band {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 0; margin-top: 72px;
+    border-top: 1px solid var(--ink); border-left: 1px solid var(--ink);
+  }
+  .stat-item {
+    padding: 28px 32px 30px;
+    border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+  }
+  .stat-item b {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600; font-size: clamp(2.4rem, 4vw, 3.6rem);
+    display: block; line-height: 1; margin-bottom: 8px;
+    color: var(--crimson);
+  }
+  .stat-item span { font-size: .84rem; line-height: 1.55; color: #3a3528; }
+  @media (max-width: 820px) {
+    .founder-grid { grid-template-columns: 1fr; gap: 48px; }
+    .stat-band { grid-template-columns: repeat(2,1fr); }
+  }
+
+  /* ─── METHOD / LADDER ─── */
+  .ladder { margin-top: 56px; }
+  .ladder-row {
+    display: grid; grid-template-columns: 48px 1fr 5fr 120px;
+    gap: 28px; padding: 28px 0;
+    border-top: 1px solid var(--ink); align-items: baseline;
+  }
+  .ladder-row:last-child { border-bottom: 1px solid var(--ink); }
+  .ladder-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-size: 1.5rem; color: var(--crimson);
+  }
+  .ladder-row h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600; font-size: 1.35rem;
+  }
+  .ladder-row p { font-size: .93rem; line-height: 1.72; }
+  .ladder-tag {
+    font-size: .65rem; letter-spacing: .13em; text-transform: uppercase;
+    color: #5a5546; text-align: right;
+  }
+  @media (max-width: 820px) {
+    .ladder-row { grid-template-columns: 32px 1fr; }
+    .ladder-row p { grid-column: 1 / -1; }
+    .ladder-tag { grid-column: 1 / -1; text-align: left; }
+  }
+
+  /* ─── FILM BAND ─── */
+  .film {
+    position: relative; min-height: 66vh; display: flex;
+    align-items: center; justify-content: center;
+    border-bottom: 1px solid var(--ink); overflow: hidden;
+    background: #161113;
+  }
+  .film video.bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 0;
+  }
+  .film .shade2 { position: absolute; inset: 0; background: rgba(22,16,18,.46); z-index: 1; }
+  .film-inner { position: relative; z-index: 2; text-align: center; padding: 0 40px; }
+  .film-inner h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-weight: 500; color: var(--parchment);
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem); line-height: 1.12; max-width: 16em;
+  }
+  .film .film-cap {
+    position: absolute; bottom: 24px; left: 40px;
+    color: rgba(242,237,215,.5); font-size: .6rem;
+    letter-spacing: .14em; text-transform: uppercase; z-index: 2;
+  }
+
+  /* ─── MARKETS ─── */
+  .markets-text { max-width: 56em; }
+  .markets-text p { font-size: 1.02rem; line-height: 1.78; margin-bottom: 1.2em; color: var(--ink); }
+  .markets-pills {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 0;
+    margin-top: 52px; border: 1px solid var(--ink);
+  }
+  .mkt-pill {
+    padding: 32px 36px 36px;
+    border-right: 1px solid var(--ink);
+  }
+  .mkt-pill:last-child { border-right: none; }
+  .mkt-pill b {
+    display: block; font-family: "Cormorant Garamond", serif;
+    font-size: 1.25rem; font-weight: 600; margin-bottom: 10px;
+  }
+  .mkt-pill span { font-size: .8rem; color: #5a5546; line-height: 1.5; }
+  @media (max-width: 820px) {
+    .markets-pills { grid-template-columns: 1fr; }
+    .mkt-pill { border-right: none; border-bottom: 1px solid var(--ink); }
+    .mkt-pill:last-child { border-bottom: none; }
+  }
+
+  /* ─── FOUNDATIONS ─── */
+  .foundations-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 0; margin-top: 56px;
+    border: 1px solid var(--ink);
+  }
+  .fdn-card { border-right: 1px solid var(--ink); overflow: hidden; transition: background .2s; }
+  .fdn-card:last-child { border-right: none; }
+  .fdn-photo { aspect-ratio: 4/3; overflow: hidden; }
+  .fdn-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .55s ease; }
+  .fdn-card:hover .fdn-photo img { transform: scale(1.05); }
+  .fdn-body { padding: 22px 28px 28px; border-top: 1px solid var(--ink); }
+  .fdn-body h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600; font-size: 1.3rem; margin-bottom: 6px;
+  }
+  .fdn-body small { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: #5a5546; }
+  @media (max-width: 820px) {
+    .foundations-grid { grid-template-columns: 1fr; }
+    .fdn-card { border-right: none; border-bottom: 1px solid var(--ink); }
+    .fdn-card:last-child { border-bottom: none; }
+  }
+
+  /* ─── MARKET NOTES ─── */
+  .notes-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 0; margin-top: 56px;
+    border: 1px solid var(--ink);
+  }
+  .note-card {
+    padding: 32px 32px 36px; border-right: 1px solid var(--ink);
+    transition: background .2s;
+  }
+  .note-card:last-child { border-right: none; }
+  .note-card:hover { background: var(--parch2); }
+  .note-date { font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: var(--crimson); margin-bottom: 14px; }
+  .note-card h4 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600; font-size: 1.3rem; margin-bottom: 12px; line-height: 1.24;
+  }
+  .note-card p { font-size: .88rem; line-height: 1.68; color: #3a3528; }
+  @media (max-width: 820px) {
+    .notes-grid { grid-template-columns: 1fr; }
+    .note-card { border-right: none; border-bottom: 1px solid var(--ink); }
+    .note-card:last-child { border-bottom: none; }
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-section { padding: 120px 0; }
+  .contact-section h2 {
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 1.0; max-width: 14em; margin-bottom: 0;
+  }
+  .contact-section h2 em { font-style: italic; }
+  .contact-row { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; margin-top: 52px; }
+  a.mail {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600; font-size: 1.6rem;
+    color: var(--ink); text-decoration: none;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color .2s, border-color .2s;
+  }
+  a.mail:hover { color: var(--crimson); border-color: var(--crimson); }
+  .btn-book {
+    background: var(--ink); color: var(--parchment);
+    text-decoration: none; padding: 16px 36px;
+    font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600;
+    display: inline-block;
+    transition: background .2s;
+  }
+  .btn-book:hover { background: var(--crimson); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 32px 0 48px;
+    border-top: 1px solid var(--ink);
+  }
+  footer .wrap {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  footer .f-left { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+  footer .f-links { display: flex; gap: 20px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+  footer .f-links a { color: var(--ink); text-decoration: none; }
+  footer .f-links a:hover { color: var(--crimson); }
+  footer svg { width: 42px; height: 42px; }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="wrap">
+    <a class="navmark" href="#"><img src="media/Most_normal.png" alt="MOST"></a>
+    <ul>
+      <li><a href="#house">The house</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#founder">Founder</a></li>
+      <li><a href="#method">Method</a></li>
+      <li><a href="#markets">Markets</a></li>
+      <li><a href="#notes">Notes</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <video class="bg" id="hero-video" autoplay muted loop playsinline poster="media/hero_poster.jpg">
+    <source src="media/hero.mov" type="video/mp4">
+  </video>
+  <div class="video-fade-mask" id="hero-mask"></div>
+  <div class="shade"></div>
+  <div class="wrap inner">
+    <div class="loc">Warsaw &middot; Brussels &middot; Paris</div>
+    <!--EDIT:hero-h1--><h1>Commercial intelligence for European sport.</h1><!--/EDIT-->
+    <!--EDIT:hero-sub--><p class="sub">MOST maps the opportunity, builds the commercial architecture, and translates the brand into the market. Intelligence before mandate. Structure before execution.</p><!--/EDIT-->
+    <div class="cta-row">
+      <a class="btn-primary" href="#contact">Book a conversation</a>
+      <a class="btn-ghost" href="#house">How we work</a>
+    </div>
+  </div>
+  <div class="scrolldown">Scroll &darr;</div>
+</div>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee"><span>
+  MOST &mdash; the Polish word for bridge <span class="dia">&#9670;</span>
+  Commercial &middot; Creative &middot; Cultural <span class="dia">&#9670;</span>
+  Central &amp; Eastern Europe <span class="dia">&#9670;</span>
+  Francophone markets <span class="dia">&#9670;</span>
+  One club per market, never more <span class="dia">&#9670;</span>
+  MOST &mdash; the Polish word for bridge <span class="dia">&#9670;</span>
+  Commercial &middot; Creative &middot; Cultural <span class="dia">&#9670;</span>
+  Central &amp; Eastern Europe <span class="dia">&#9670;</span>
+  Francophone markets <span class="dia">&#9670;</span>
+  One club per market, never more <span class="dia">&#9670;</span>
+</span></div>
+
+<!-- ─── MANIFESTO ─── -->
+<section id="house" class="manifesto-section">
+  <div class="wrap">
+    <div class="kicker reveal">The house</div>
+    <div class="manifesto-inner">
+      <!--EDIT:manifesto-1--><p class="reveal">Every PE acquisition of a European club manufactures the same urgent mandate on day one: <em>grow commercial revenue from markets the club has never touched.</em> The fund cannot execute that mandate itself. It doesn't know how to walk into a boardroom in Warsaw or Casablanca and close a deal with a local brand.</p><!--/EDIT-->
+      <!--EDIT:manifesto-2--><p class="reveal d1">It runs the other way too. A brand that has outgrown its home market in Bucharest or Belgrade hits the same wall from the opposite side: the fastest way to buy credibility in Western Europe is a partnership with a club whose name already means something there. But that brand doesn't know how a European club's commercial department works, what a fair deal looks like, or who to even call.</p><!--/EDIT-->
+      <!--EDIT:manifesto-3--><p class="reveal d1">That is the vacuum, in both directions. Eighty million people across Central &amp; Eastern Europe who consume Western football daily &mdash; and no trusted intermediary who knows both their world and the inside of a European club's commercial department.</p><!--/EDIT-->
+      <p class="reveal d2">We map who the right partner is, and why the partnership would matter in that market &mdash; research precise enough that the case sells itself. Where a client wants to go further, we can also make the introduction and see the deal through to signature. Either way, the relationship doesn't usually end with one report: most clients move into ongoing market intelligence as things develop, which is why the work renews.</p>
+      <div class="aside reveal d3">Not an agency &mdash; agencies execute on brief. Not a management consultancy &mdash; consultancies stop at the recommendation. A market access &amp; creative strategy consultancy that maps the opportunity, builds the case, and can carry it to signature when that's what's needed.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── SERVICES ─── -->
+<section id="services" class="services-section">
+  <div class="svc-header">
+    <div class="wrap">
+      <div class="kicker reveal">Services</div>
+      <h2 class="reveal"><span class="rule"></span>Research first. Representation earned.</h2>
+      <p class="reveal d1" style="max-width:44em; margin-top:20px; font-size:1.02rem; line-height:1.72;">Every engagement starts with a written deliverable. The intermediary role becomes available once that work exists and trust is established &mdash; a discipline that protects both sides.</p>
+    </div>
+  </div>
+
+  <!-- Service One -->
+  <div class="mega-block reveal">
+    <div class="mb-text">
+      <div class="mb-num">i.</div>
+      <h3>Market Intelligence &amp; Partnership Ideas</h3>
+      <p class="mb-desc">The core offer. Sold cold, paid by project, delivered as a written document. No dealmaking, no network promises — only judgment and research.</p>
+      <ul class="svc-list">
+        <li><b>Market Opportunity Brief</b><small>Which brands, clubs, or properties are a fit — and why. Named, not categorised.</small></li>
+        <li><b>Market Entry Strategy Report</b><small>How to enter: positioning, valuation ranges, risks, first steps.</small></li>
+        <li><b>Partnership &amp; Campaign Concept</b><small>The commercial and cultural idea behind a specific partnership — built for the market's own codes.</small></li>
+      </ul>
+      <p class="mb-quote">"Most sponsorships are sold once the shirt already has a shape. This maps the opportunity before that shape exists."</p>
+    </div>
+    <div class="mb-visual">
+      <img src="media/grounds_sansiro.jpg" alt="San Siro" loading="lazy">
+      <div class="vis-overlay"></div>
+    </div>
+  </div>
+
+  <!-- Service Two -->
+  <div class="mega-block flip dark reveal">
+    <div class="mb-text">
+      <div class="mb-num">ii.</div>
+      <h3>Ongoing Market Watch</h3>
+      <p class="mb-desc">A monthly retainer for clients who want continued market scanning and a steady flow of new ideas — fully decoupled from any intermediary role.</p>
+      <ul class="svc-list">
+        <li><b>Continuous market scanning</b><small>New entrants, shifting budgets, emerging properties — reported monthly.</small></li>
+        <li><b>Idea flow</b><small>A standing brief: new partnership angles delivered as they appear, not on request.</small></li>
+        <li><b>Strategic counsel</b><small>A sounding board on timing, positioning, and market reads, informed by direct, ongoing experience in the market.</small></li>
+      </ul>
+      <p class="mb-quote">"Offered after one or two briefs. Never the opening ask."</p>
+    </div>
+    <div class="mb-visual">
+      <img src="media/grounds_marseille.jpg" alt="Stade Vélodrome" loading="lazy">
+      <div class="vis-overlay"></div>
+    </div>
+  </div>
+
+  <!-- Service Three -->
+  <div class="mega-block reveal">
+    <div class="mb-text">
+      <div class="mb-num">iii.</div>
+      <h3>Introduction &amp; Representation</h3>
+      <p class="mb-desc">Optional and earned. Only available to a client who has already commissioned a Service One report. Two deliberate modes — no ambiguity about what is and is not being promised.</p>
+      <ul class="svc-list">
+        <li><b>Light — Introduction only</b><small>Introduce the two sides, then step back. Flat referral fee. No ongoing involvement promised or implied.</small></li>
+        <li><b>Heavy — Full representation</b><small>Represent one side from approach through signature. Fixed fee for a bounded scope, plus a success fee on close.</small></li>
+        <li><b>Safeguards on both modes</b><small>Defined number of targets, defined time window, written mandate before any approach. A "no" is a priced-in outcome — never a silent dead end.</small></li>
+      </ul>
+      <p class="mb-quote">"The intermediary role is available. It is not the product."</p>
+    </div>
+    <div class="mb-visual">
+      <img src="media/grounds_bernabeu.jpg" alt="Santiago Bernabéu" loading="lazy">
+      <div class="vis-overlay"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOUNDER ─── -->
+<section id="founder">
+  <div class="wrap">
+    <div class="kicker reveal">A note from the founder</div>
+    <div class="founder-grid">
+      <div class="founder-col">
+        <div class="founder-photo reveal">
+          <img src="media/founder.jpg" alt="Dawid Piotrowski">
+          <div class="ph-label">Dawid Piotrowski — founder</div>
+        </div>
+        <a class="linkedin-btn" href="https://www.linkedin.com/in/dawid-piotrowski-954170198" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="founder-text">
+        <!--EDIT:founder-h2--><h2 class="reveal"><span class="rule"></span>I watched the same gap for four years. Then I built the bridge.</h2><!--/EDIT-->
+        <!--EDIT:founder-p1--><p class="reveal d1">Born and raised in Brussels. Four years inside adidas and Unisport, managing sport partnerships across Central Europe. I saw the gap, understood both sides of it, and built the bridge.</p><!--/EDIT-->
+        <!--EDIT:founder-p2--><p class="reveal d2">The same scene kept repeating: a major European club with a Polish international and millions of Polish fans &mdash; and no commercial presence in Poland. Across the table, Polish banks and retailers with budget and appetite, thinking about how to get into European football.</p><!--/EDIT-->
+        <p class="reveal d2">Nobody connected them. The global agencies cover the region from London with desk research. The local agencies have never sat inside a club's commercial department. I&rsquo;ve done both &mdash; in both languages. An MSc thesis on fashion&rsquo;s influence on football gave me a creative register that&rsquo;s rare among commercial operators.</p>
+        <p class="reveal d2">MOST is the Polish word for bridge. It isn't a metaphor. It's the job.</p>
+        <div class="sig reveal d3">Dawid Piotrowski</div>
+      </div>
+    </div>
+
+    <div class="stat-band">
+<div class="stat-item reveal d1">
+        <b>4</b>
+        <span>working languages &mdash; native French &amp; Polish, C1 English, B2 Spanish</span>
+      </div>
+      <div class="stat-item reveal d2">
+        <b>4+&nbsp;yrs</b>
+        <span>inside adidas &amp; Unisport CEE sport partnerships</span>
+      </div>
+      <div class="stat-item reveal d3">
+        <b>1</b>
+        <span>club per market. Never more &mdash; exclusivity is the product.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── METHOD ─── -->
+<section id="method">
+  <div class="wrap">
+    <div class="kicker reveal">Method</div>
+    <h2 class="reveal"><span class="rule"></span>Trust is built in sequence.</h2>
+    <div class="ladder reveal d1">
+      <div class="ladder-row">
+        <div class="ladder-num">i.</div>
+        <h3>Commission a brief</h3>
+        <p>The first engagement is always a written deliverable — a Market Opportunity Brief, a Market Entry Strategy Report, or a Partnership Concept. Each one stands on its own, with nothing assumed about what comes next. Research first.</p>
+        <div class="ladder-tag">2&ndash;4 weeks &middot; fixed fee</div>
+      </div>
+      <div class="ladder-row">
+        <div class="ladder-num">ii.</div>
+        <h3>Extend into ongoing watch</h3>
+        <p>After one or two projects, clients who want a continuous flow of market intelligence can move to a monthly retainer. Still pure research and judgment — no representation, no obligation to broker anything.</p>
+        <div class="ladder-tag">Monthly retainer</div>
+      </div>
+      <div class="ladder-row">
+        <div class="ladder-num">iii.</div>
+        <h3>Representation — if warranted</h3>
+        <p>Introduction or full representation is available once the research relationship exists. Scope is always bounded: defined targets, defined time window, written agreement before any approach is made. A "no" from a target is a normal outcome — never a silent dead end.</p>
+        <div class="ladder-tag">Flat fee or fixed + success</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FILM ─── -->
+<div class="film">
+  <video class="bg" id="culture-video" autoplay muted loop playsinline poster="media/culture_poster.jpg">
+    <source src="media/culture.mov" type="video/mp4">
+  </video>
+  <div class="video-fade-mask" id="culture-mask"></div>
+  <div class="shade2"></div>
+  <div class="film-inner reveal">
+    <h3>The culture is the market.</h3>
+  </div>
+  <div class="film-cap">Founder's archive &mdash; matchday, somewhere in Europe</div>
+</div>
+
+<!-- ─── MARKETS ─── -->
+<section id="markets">
+  <div class="wrap">
+    <div class="kicker reveal">Where we work</div>
+    <h2 class="reveal"><span class="rule"></span>All of Europe.</h2>
+    <div class="markets-text reveal d1">
+      <p>MOST operates across the European market as a whole — wherever a brief calls for it. The primary focus is Central &amp; Eastern Europe, where the founder has four years of on-the-ground commercial work, native language capability, and an existing network inside clubs, brands, and agencies. The Francophone market — France, Belgium, and North Africa — is the second axis, grounded in the founder's French background and Belgian citizenship.</p>
+      <p>The geography is not a constraint. It is a depth advantage. Most intermediaries cover Europe from a desk in London. MOST covers the markets it knows from the inside — and declines the ones it does not.</p>
+    </div>
+    <div class="markets-pills reveal d2">
+      <div class="mkt-pill"><b>Central &amp; Eastern Europe</b><span>Primary — Poland, Czech Republic, Romania, Hungary, Croatia</span></div>
+      <div class="mkt-pill"><b>Francophone</b><span>Secondary — France, Belgium, Morocco, West Africa</span></div>
+      <div class="mkt-pill"><b>Western Europe</b><span>As mandated — where the brief leads</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── MARKET NOTES ─── -->
+<section id="notes">
+  <div class="wrap">
+    <div class="kicker reveal">Market notes &mdash; published weekly</div>
+    <h2 class="reveal"><span class="rule"></span>How we think, in public.</h2>
+    <div class="notes-grid reveal d1">
+      <div class="note-card">
+        <!--EDIT:note1-date--><div class="note-date">Edition 014 &mdash; June 2026</div><!--/EDIT-->
+        <!--EDIT:note1-title--><h4>Why no Ligue 1 club has a Polish sponsor &mdash; and who moves first</h4><!--/EDIT-->
+        <!--EDIT:note1-body--><p>Frankowski has been at Lens for years. PKO BP sponsors a league, not a club. Someone will connect these dots.</p><!--/EDIT-->
+      </div>
+      <div class="note-card">
+        <!--EDIT:note2-date--><div class="note-date">Edition 013 &mdash; June 2026</div><!--/EDIT-->
+        <!--EDIT:note2-title--><h4>What RedBird's playbook means for mid-table commercial teams</h4><!--/EDIT-->
+        <!--EDIT:note2-body--><p>PE ownership changes the partnership mandate before it changes anything else. The window this opens in CEE.</p><!--/EDIT-->
+      </div>
+      <div class="note-card">
+        <!--EDIT:note3-date--><div class="note-date">Edition 012 &mdash; May 2026</div><!--/EDIT-->
+        <!--EDIT:note3-title--><h4>The &#379;ywiec question: why Heineken's CEE brands underspend on football</h4><!--/EDIT-->
+        <!--EDIT:note3-body--><p>The group sponsors the Champions League. Its Polish flagship sponsors almost nothing. The gap is the brief.</p><!--/EDIT-->
+      </div>
+    </div>
+    <p style="margin-top:28px" class="reveal d2"><a class="u" href="#">Read and subscribe on Substack &rarr;</a></p>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact" class="contact-section">
+  <div class="wrap">
+    <div class="kicker reveal">Contact</div>
+    <!--EDIT:contact-h2--><h2 class="reveal">Got a market<br>you can't reach?<br><em>Let's talk.</em></h2><!--/EDIT-->
+    <div class="contact-row reveal d1">
+      <a class="mail" href="mailto:dawidpiotrowski2303@gmail.com">dawidpiotrowski2303@gmail.com</a>
+      <a class="btn-book" href="#">Book 20 minutes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="wrap">
+    <div class="f-left">MOST &mdash; Sport Commercial &amp; Creative Consultancy</div>
+    <img src="media/MOST_badge.png" alt="MOST" style="width:42px;height:42px;object-fit:contain;">
+    <div class="f-links">
+      <span>Warsaw &middot; Brussels &middot; Paris</span>
+      <a class="u" href="#">LinkedIn</a>
+      <a class="u" href="#">Substack</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
