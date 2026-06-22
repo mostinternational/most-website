@@ -793,21 +793,21 @@
   <div class="wrap">
     <div class="kicker reveal">Market notes &mdash; published weekly</div>
     <h2 class="reveal"><span class="rule"></span>How we think, in public.</h2>
-    <div class="notes-grid reveal d1">
+    <div class="notes-grid reveal d1" id="notes-grid">
       <div class="note-card">
-        <!--EDIT:note1-date--><div class="note-date">Edition 014 &mdash; June 2026</div><!--/EDIT-->
-        <!--EDIT:note1-title--><h4>Why no Ligue 1 club has a Polish sponsor &mdash; and who moves first</h4><!--/EDIT-->
-        <!--EDIT:note1-body--><p>Frankowski has been at Lens for years. PKO BP sponsors a league, not a club. Someone will connect these dots.</p><!--/EDIT-->
+        <div class="note-date">Edition 014 &mdash; June 2026</div>
+        <h4>Why no Ligue 1 club has a Polish sponsor &mdash; and who moves first</h4>
+        <p>Frankowski has been at Lens for years. PKO BP sponsors a league, not a club. Someone will connect these dots.</p>
       </div>
       <div class="note-card">
-        <!--EDIT:note2-date--><div class="note-date">Edition 013 &mdash; June 2026</div><!--/EDIT-->
-        <!--EDIT:note2-title--><h4>What RedBird's playbook means for mid-table commercial teams</h4><!--/EDIT-->
-        <!--EDIT:note2-body--><p>PE ownership changes the partnership mandate before it changes anything else. The window this opens in CEE.</p><!--/EDIT-->
+        <div class="note-date">Edition 013 &mdash; June 2026</div>
+        <h4>What RedBird's playbook means for mid-table commercial teams</h4>
+        <p>PE ownership changes the partnership mandate before it changes anything else. The window this opens in CEE.</p>
       </div>
       <div class="note-card">
-        <!--EDIT:note3-date--><div class="note-date">Edition 012 &mdash; May 2026</div><!--/EDIT-->
-        <!--EDIT:note3-title--><h4>The &#379;ywiec question: why Heineken's CEE brands underspend on football</h4><!--/EDIT-->
-        <!--EDIT:note3-body--><p>The group sponsors the Champions League. Its Polish flagship sponsors almost nothing. The gap is the brief.</p><!--/EDIT-->
+        <div class="note-date">Edition 012 &mdash; May 2026</div>
+        <h4>The &#379;ywiec question: why Heineken's CEE brands underspend on football</h4>
+        <p>The group sponsors the Champions League. Its Polish flagship sponsors almost nothing. The gap is the brief.</p>
       </div>
     </div>
     <p style="margin-top:28px" class="reveal d2"><a class="u" href="https://mostinternational.substack.com" target="_blank" rel="noopener">Read and subscribe on Substack &rarr;</a></p>
@@ -884,6 +884,35 @@
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// RSS auto-fetch from Substack
+(function() {
+  const FEED = 'https://mostinternational.substack.com/feed';
+  const PROXY = 'https://api.allorigins.win/get?url=';
+  fetch(PROXY + encodeURIComponent(FEED))
+    .then(r => r.json())
+    .then(data => {
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(data.contents, 'text/xml');
+      const items = Array.from(xml.querySelectorAll('item')).slice(0, 3);
+      if (!items.length) return;
+      const grid = document.getElementById('notes-grid');
+      grid.innerHTML = items.map(item => {
+        const title = item.querySelector('title')?.textContent || '';
+        const link = item.querySelector('link')?.textContent || '#';
+        const desc = item.querySelector('description')?.textContent || '';
+        const date = item.querySelector('pubDate')?.textContent || '';
+        const dateStr = date ? new Date(date).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) : '';
+        const plain = desc.replace(/<[^>]+>/g, '').slice(0, 120).trim() + '…';
+        return `<a class="note-card" href="${link}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div class="note-date">${dateStr}</div>
+          <h4>${title}</h4>
+          <p>${plain}</p>
+        </a>`;
+      }).join('');
+    })
+    .catch(() => {}); // silently keep static fallback on error
+})();
 </script>
 
 </body>
