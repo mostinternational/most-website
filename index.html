@@ -267,7 +267,7 @@
     display: grid;
     grid-template-columns: 5fr 7fr;
     border-bottom: 1px solid var(--ink);
-    min-height: 480px;
+    min-height: 540px;
   }
   .mega-block.flip { grid-template-columns: 7fr 5fr; }
   .mega-block.dark { background: var(--ink); color: var(--parchment); }
@@ -282,6 +282,9 @@
   }
   .mega-block.flip .mb-visual { order: 1; }
   .mega-block .mb-visual img {
+    /* Absolute so the tall source images don't set the row height.
+       The row is sized by the text column; the image covers whatever that is. */
+    position: absolute; inset: 0;
     width: 100%; height: 100%; object-fit: cover; display: block;
   }
   .mega-block .mb-visual .vis-overlay {
