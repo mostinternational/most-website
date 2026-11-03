@@ -507,8 +507,9 @@
   /* ─── CONTACT ─── */
   .contact-section { padding: 120px 0; }
   .contact-section h2 {
-    font-size: clamp(3rem, 8vw, 7rem);
-    line-height: 1.0; max-width: 14em; margin-bottom: 0;
+    font-size: clamp(2rem, 4.4vw, 3.9rem);
+    line-height: 1.12; max-width: 18em; margin-bottom: 0;
+    text-wrap: balance;
   }
   .contact-section h2 em { font-style: italic; }
   .contact-row { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; margin-top: 52px; }
@@ -578,8 +579,9 @@
 
 <!-- ─── HERO ─── -->
 <div class="hero">
-  <video class="bg" id="hero-video" autoplay muted loop playsinline poster="media/hero_poster.jpg">
-    <source src="media/hero.mov" type="video/mp4">
+  <video class="bg" id="hero-video" autoplay muted loop playsinline preload="auto" poster="media/hero_poster.jpg">
+    <!-- H.264. The .mov in media/ is HEVC and will not decode in Chrome. -->
+    <source src="media/hero.mp4" type="video/mp4">
   </video>
   <div class="video-fade-mask" id="hero-mask"></div>
   <div class="shade"></div>
@@ -737,8 +739,9 @@
 
 <!-- ─── FILM ─── -->
 <div class="film">
-  <video class="bg" id="culture-video" autoplay muted loop playsinline poster="media/culture_poster.jpg">
-    <source src="media/culture.mov" type="video/mp4">
+  <video class="bg" id="culture-video" autoplay muted loop playsinline preload="auto" poster="media/culture_poster.jpg">
+    <!-- H.264. The .mov in media/ is HEVC and will not decode in Chrome. -->
+    <source src="media/culture.mp4" type="video/mp4">
   </video>
   <div class="video-fade-mask" id="culture-mask"></div>
   <div class="shade2"></div>
