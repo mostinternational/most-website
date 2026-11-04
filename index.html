@@ -415,10 +415,16 @@
     align-items: center; justify-content: center;
     border-bottom: 1px solid var(--ink); overflow: hidden;
     background: #161113;
+    /* Paint containment: the band repaints on its own, not with the page. */
+    contain: paint;
   }
   .film video.bg {
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; z-index: 0;
+    /* Give the video its own compositor layer so scrolling moves it
+       instead of recompositing the band every frame. */
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
   .film .shade2 { position: absolute; inset: 0; background: rgba(22,16,18,.46); z-index: 1; }
   .film-inner { position: relative; z-index: 2; text-align: center; padding: 0 40px; }
