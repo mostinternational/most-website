@@ -23,8 +23,8 @@
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
   @media (max-width: 680px) {
     .wrap { padding: 0 28px; }
-    .hero h1 { font-size: 2.4rem; line-height: 1.08; }
     .hero .inner { padding: 0 28px 88px; }
+    a.mail { font-size: 1.15rem; overflow-wrap: anywhere; }
   }
 
   /* animated underline */
@@ -131,7 +131,7 @@
   .hero h1 {
     font-family: "Cormorant Garamond", serif;
     font-weight: 500; color: var(--parchment);
-    font-size: clamp(3.6rem, 8.5vw, 7.2rem);
+    font-size: clamp(2.5rem, 8.5vw, 7.2rem);
     line-height: 1.0; max-width: 14em;
     letter-spacing: -.01em;
   }
@@ -380,6 +380,10 @@
   @media (max-width: 820px) {
     .founder-grid { grid-template-columns: 1fr; gap: 48px; }
     .stat-band { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 420px) {
+    .stat-band { grid-template-columns: 1fr; }
+    .stat-item { padding: 24px 24px 26px; }
   }
 
   /* ─── METHOD / LADDER ─── */
